@@ -6,4 +6,22 @@
 
 {% block content %}
   <h1 class="title">{{ titulo }}</h1>
+  {% if messages %}
+    {% for message in messages %}
+      <div class="message">{{ message }}</div>
+    {% endfor %}
+  {% endif %}
+  {% for persona in personas %}
+    <div class="persona-item">
+      <div class="data">
+        <h2>{{ persona.nombre }} {{ persona.apellidos }}</h2>
+        <span class="date">{{ persona.fecha_de_registro }}</span>
+        <p>
+          Sexo: {% if persona.sexo == 'Masculino' %}Masculino{% elif persona.sexo == 'Femenino' %}Femenino{% endif %}
+          <a href="{% url 'eliminar_persona' id=persona.id %}" class="btn btn-delete">Eliminar</a>
+        </p>
+      </div>
+      <div class="clearfix"></div>
+    </div>
+  {% endfor %}
 {% endblock %}

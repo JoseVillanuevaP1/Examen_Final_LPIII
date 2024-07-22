@@ -22,4 +22,6 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('', views.personas, name = "personas"),
     path('personas/',views.personas,name="personas"),
+    path('eliminar-persona/<int:id>',views.eliminar_persona, name='eliminar_persona'),
+    path('create-persona/',views.create_persona, name='create_persona'),
 ]
